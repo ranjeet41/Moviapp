@@ -1,0 +1,37 @@
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 90%;
+    background: #f1f1f1;
+  }
+  
+  form.example button {
+    float: left;
+    width: 5%;
+    padding: 10px;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+  }
+  .button1{
+    background: #2196F3;
+  }
+  .button2{
+    background: #ef3405;
+  }
+  form.example .button1:hover {
+    background: #0b7dda;
+  }
+  form.example .button2:hover {
+    background: #da0b0b;
+  }
+  
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

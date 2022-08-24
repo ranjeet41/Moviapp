@@ -1,0 +1,23 @@
+  .contents {
+    margin-top: 100px;
+  } 
+  .card {
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    max-width: 100%;
+    min-height: 600px;
+    transition: all 0.2s ease-in-out;
+    background-color: #fafafa;
+  }
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+  .back{
+    cursor: pointer;
+  }
+
+
+  
+
+ 
