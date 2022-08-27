@@ -1,28 +1,27 @@
-<mat-progress-spinner *ngIf="loadings" class="text-center"color="accent" mode="indeterminate"value="100"
-style="display:flex; position: fixed; z-index: 999;margin: 22% 47%;"
-></mat-progress-spinner>
-  <div class="content shadow" role="main">
-    <!-- <app-search (searchTextChanged)="onSearchTextEnterd($event)" (searchTextChange)="onSearchClear($event)"
+<mat-progress-spinner *ngIf="loadings" class="text-center" color="accent" mode="indeterminate" value="100"
+  style="display:flex; position: fixed; z-index: 999;margin: 22% 48%;"></mat-progress-spinner>
+<div class="content shadow" role="main">
+  <!-- <app-search (searchTextChanged)="onSearchTextEnterd($event)" (searchTextChange)="onSearchClear($event)"
     ></app-search>
        -->
-       <form class="example">
-        <input type="text" placeholder="Search by name.." name="search" [(ngModel)]="searchInput">
-        <button class="button1"  (click)="onSearch()" ><i class="fa fa-search"></i></button>
-        <button style="background: #ef3405;" id="clear" (click)="onSearchClear()" ><i class="fa fa-close"></i></button>
-      </form>
-      <h1>{{title}}</h1>
-      <div class="card-container mb-3 ">
-        <div class="row justify-content-center">
-          <div class="col-md-6 col-lg-2" *ngFor="let d of data | paginate: { itemsPerPage: 18, currentPage: p }">
-            <div class="card" *ngIf="searchText === ''||d.title.toLowerCase().includes(searchText)" (click)="GetMoviDeatils(d.id)" [routerLink]="['/movis', d.id]">
-              <img src={{imgbaseurl+d.backdrop_path}} width="100%" height="70%">
-              <div class="card-body">{{d.title}}</div>
-            </div>
-          </div>
-        </div>
+  <div class="shadow p-3 pt-5">
+    <form class="example row">
+      <div class="col-md-6"><input type="text" placeholder="Search by name.." name="search" [(ngModel)]="searchInput">
       </div>
-      <div class="float-right">
-        <ul class="pagination shadow">
+      <div class="col-md-1"><button class="button1" (click)="onSearch()"><i class="fa fa-search"></i></button></div>
+      <div class="col-md-1"><button style="background: #ef3405;" id="clear" (click)="onSearchClear()"><i
+            class="fa fa-close"></i></button></div>
+      <div class="col-md-2"><button style="background: #0e0e0e;" id="clear" (click)="onSortByName()">Sort By
+          Name</button></div>
+      <div class="col-md-2"><button style="background: #102b04;" id="clear" (click)="onSortByDate()">Sort By
+          Date</button></div>
+    </form>
+    <div class="row pt-5 ">
+      <div class="col-lg-9 col-md-6 col-sm-12">
+        <h1>{{title}}</h1>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <ul class="pagination " *ngIf="isPagination">
           <li class="page-item">
             <a class="page-link" (click)="pagination.onFirst()">First</a>
           </li>
@@ -40,3 +39,32 @@ style="display:flex; position: fixed; z-index: 999;margin: 22% 47%;"
         </ul>
       </div>
     </div>
+  </div>
+  <div class="card-container mb-3 ">
+    <div class="row justify-content-center" *ngIf="isPagination">
+      <div class="col-md-6 col-lg-2" *ngFor="let d of data | paginate: { itemsPerPage: 18, currentPage: p }">
+        <div class="card" style="min-height:400px;">
+          <img class="card-img-top" src={{imgbaseurl+d.poster_path}} alt="imageurl" width="100%" height="300px"
+            (click)="GetMoviDeatils(d.id)" [routerLink]="['/movis', d.id]">
+          <div class="card-body">
+            <p class="card-title">{{d.title}}</p>
+            <h5 class="card-text">Release_date : {{d.release_date.toString()}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center" *ngIf="isshowSearhdata">
+      <div class="col-md-6 col-lg-2" *ngFor="let d of SearchData" (click)="GetMoviDeatils(d.id)"
+        [routerLink]="['/movis', d.id]">
+        <div class="card" style="min-height:400px;">
+          <img class="card-img-top" src={{imgbaseurl+d.poster_path}} alt="imageurl" width="100%" height="300px">
+          <div class="card-body">
+            <p class="card-title">{{d.title}}</p>
+            <h6 class="card-text">Release_date : {{d.release_date}}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
