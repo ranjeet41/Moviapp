@@ -29,6 +29,7 @@ export class AllMovisComponent implements OnInit {
   total_pages: any;
   sortByNameData: any;
   sortByDateData: any;
+  isNodataFound: boolean = false;
   imgbaseurl = 'https://www.themoviedb.org/t/p/w220_and_h330_face'
   constructor(private service: ServicesService) { }
   async ngOnInit() {
@@ -39,13 +40,21 @@ export class AllMovisComponent implements OnInit {
     this.isPagination = true;
     await this.service.getData(pageno).subscribe(
       (valus) => {
-        this.TotalPage = valus.total_pages
-        this.Movidata = valus
-        this.data = this.Movidata.results;
-        console.log(this.data)
-        this.loadings = false;
-      }
-    )
+        if (valus && valus.results.length > 0) {
+          this.TotalPage = valus.total_pages
+          this.Movidata = valus
+          this.data = this.Movidata.results;
+          console.log(this.data)
+          this.loadings = false;
+          this.isNodataFound = false;
+        }
+        else {
+          this.loadings = false;
+          this.isNodataFound = true;
+        }
+      },
+      );
+
   }
   async onSearch() {
     if (this.searchInput != '' && this.searchInput !== undefined) {
@@ -53,13 +62,20 @@ export class AllMovisComponent implements OnInit {
       this.isPagination = false;
       this.isshowSearhdata = true;
       await this.service.search(this.searchInput).subscribe((res: any) => {
-        console.log(res)
-        this.Movidata = res;
-        this.TotalSearchData = res.total_results;
-        this.TotalPage = res.total_pages;
-        this.SearchData = this.Movidata.results
-        console.log(this.SearchData)
+        if (res && res.results.length > 0) {
+          console.log(res)
+          this.Movidata = res;
+          this.TotalSearchData = res.total_results;
+          this.TotalPage = res.total_pages;
+          this.SearchData = this.Movidata.results
+          console.log(this.SearchData)
+          this.loadings = false;
+          this.isNodataFound = false;
+        }
+        else{
+        this.isNodataFound = true;
         this.loadings = false;
+        }
       })
     }
     else {
@@ -119,7 +135,7 @@ export class AllMovisComponent implements OnInit {
       })
       this.loadings = false;
     }
-    else{
+    else {
       this.loadings = true;
       this.sortByDateData = this.Movidata.results;
       this.sortByDateData.sort((a: any, b: any) => {
@@ -138,7 +154,7 @@ export class AllMovisComponent implements OnInit {
     }
 
   }
-  
+
   async GetMoviDeatils(id: any) {
     this.loadings = true;
     console.log('id', id)

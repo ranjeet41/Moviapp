@@ -1,3 +1,5 @@
+<mat-progress-spinner *ngIf="loadings" class="text-center loader" color="accent" mode="indeterminate" value="100"
+></mat-progress-spinner>
 <div class="container contents shadow p-3">
   <div class="row justify-content-center">
     <div class="col-md-12 col-lg-12">
@@ -8,14 +10,14 @@
               <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
             </svg>
             </div>
-            <h1 class="mt-5"><b>{{ticketDetails.title}}</b></h1>
-            <h1 class="mt-4">Rating:{{ticketDetails.vote_average}}/5</h1>
-            <h2 class="mt-2 text-justify">{{ticketDetails.overview}}</h2>
-            <h1 class="mt-2">Release Date  {{ticketDetails.release_date}}</h1>
-            <h1 class="mt-2">Original Language  {{ticketDetails.original_language}}</h1>
+            <h1 class="mt-5"><b>{{Details.title}}</b></h1>
+            <h1 class="mt-4">Rating:{{Details.vote_average}}/5</h1>
+            <h2 class="mt-2 text-justify">{{Details.overview}}</h2>
+            <h1 class="mt-2">Release Date  {{Details.release_date}}</h1>
+            <h1 class="mt-2">Original Language  {{Details.original_language}}</h1>
           </div>
           <div class="col-md-6">
-          <img src={{imgbaseurl+ticketDetails.backdrop_path}} width="100%" height="auto"></div>
+          <img src={{imgbaseurl+Details.backdrop_path}} width="100%" height="auto"></div>
         </div>
       </div>
     </div>

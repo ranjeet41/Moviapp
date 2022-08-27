@@ -11,8 +11,8 @@ import { Location } from '@angular/common'
 })
 export class MovisComponent implements OnInit {
   ticketId :any;
-  ticketDetails: any;
-  payload: number | undefined;
+  Details: any;
+  loadings:boolean = true;
   imgbaseurl = 'https://www.themoviedb.org/t/p/w220_and_h330_face'
 
   constructor(
@@ -29,7 +29,14 @@ export class MovisComponent implements OnInit {
   }
   async getTicketDetails(){
     await (this.service.getById(this.ticketId)).subscribe((response:any)=>{
-          this.ticketDetails = response;
+      if(response){
+          this.Details = response;
+          this.loadings = false;
+
+      }
+      else{
+        this.loadings = false;
+      }
     })
   }
 

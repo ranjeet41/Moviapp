@@ -9,8 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { PaginationDirective } from '../directive/pagination.directive';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { UpcommingMoviComponent } from './upcomming-movi/upcomming-movi.component';
-
-
+import { NoDataFoundComponent } from '../no-data-found/no-data-found.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +18,7 @@ import { UpcommingMoviComponent } from './upcomming-movi/upcomming-movi.componen
     PaginationDirective,
     SearchComponent,
     UpcommingMoviComponent,
+    NoDataFoundComponent
   ],
   imports: [
     CommonModule,
