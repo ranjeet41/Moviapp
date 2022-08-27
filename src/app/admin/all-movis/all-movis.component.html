@@ -1,10 +1,10 @@
-<mat-progress-spinner *ngIf="loadings" class="text-center" color="accent" mode="indeterminate" value="100"
-  style="display:flex; position: fixed; z-index: 999;margin: 22% 48%;"></mat-progress-spinner>
+<mat-progress-spinner *ngIf="loadings" class="text-center loader" color="accent" mode="indeterminate" value="100"
+></mat-progress-spinner>
 <div class="content shadow" role="main">
   <!-- <app-search (searchTextChanged)="onSearchTextEnterd($event)" (searchTextChange)="onSearchClear($event)"
     ></app-search>
        -->
-  <div class="shadow p-3 pt-5">
+  <div class="shadow p-3 pt-4">
     <form class="example row">
       <div class="col-md-6"><input type="text" placeholder="Search by name.." name="search" [(ngModel)]="searchInput">
       </div>
@@ -17,11 +17,11 @@
           Date</button></div>
     </form>
     <div class="row pt-5 ">
-      <div class="col-lg-9 col-md-6 col-sm-12">
-        <h1>{{title}}</h1>
+      <div class="col-lg-6  col-md-6 col-sm-12">
+        <h1><strong>{{title}}</strong></h1>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <ul class="pagination " *ngIf="isPagination">
+      <div class="col-lg-6 col-md-6 col-sm-12 ">
+        <ul class="pagination float-right" *ngIf="isPagination">
           <li class="page-item">
             <a class="page-link" (click)="pagination.onFirst()">First</a>
           </li>
@@ -68,3 +68,4 @@
     </div>
   </div>
 </div>
+<app-no-data-found *ngIf="isNodataFound"></app-no-data-found>

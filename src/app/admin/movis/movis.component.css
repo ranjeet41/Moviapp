@@ -16,7 +16,14 @@
   .back{
     cursor: pointer;
   }
-
+  .loader{
+    display:flex; position: fixed; z-index: 999;margin: 22% 46%;
+  }
+  @media only screen and (max-width: 600px) {
+    .loader{
+      display:flex; position: fixed; z-index: 999;margin: 22% 37%;
+    }
+  }
 
   
 
