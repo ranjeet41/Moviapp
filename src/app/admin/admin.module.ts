@@ -8,6 +8,7 @@ import { SearchComponent } from '../search/search.component';
 import { FormsModule } from '@angular/forms';
 import { PaginationDirective } from '../directive/pagination.directive';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { UpcommingMoviComponent } from './upcomming-movi/upcomming-movi.component';
 
 
 
@@ -17,15 +18,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     AllMovisComponent,
     PaginationDirective,
     SearchComponent,
+    UpcommingMoviComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     NgxPaginationModule,
     FormsModule,
-    MatProgressSpinnerModule
-    
-
+    MatProgressSpinnerModule,
   ]
 })
 export class AdminModule { }
