@@ -32,7 +32,6 @@ export class MovisComponent implements OnInit {
       if(response){
           this.Details = response;
           this.loadings = false;
-
       }
       else{
         this.loadings = false;

@@ -53,7 +53,7 @@ export class AllMovisComponent implements OnInit {
           this.isNodataFound = true;
         }
       },
-      );
+    );
 
   }
   async onSearch() {
@@ -61,6 +61,7 @@ export class AllMovisComponent implements OnInit {
       this.loadings = true;
       this.isPagination = false;
       this.isshowSearhdata = true;
+      this.SearchData = []
       await this.service.search(this.searchInput).subscribe((res: any) => {
         if (res && res.results.length > 0) {
           console.log(res)
@@ -72,11 +73,12 @@ export class AllMovisComponent implements OnInit {
           this.loadings = false;
           this.isNodataFound = false;
         }
-        else{
-        this.isNodataFound = true;
-        this.loadings = false;
+        else {
+          this.isNodataFound = true;
+          this.loadings = false;
         }
       })
+      this.loadings = false;
     }
     else {
       alert('Please Enter your Search Text !')
@@ -152,9 +154,7 @@ export class AllMovisComponent implements OnInit {
       })
       this.loadings = false;
     }
-
   }
-
   async GetMoviDeatils(id: any) {
     this.loadings = true;
     console.log('id', id)
